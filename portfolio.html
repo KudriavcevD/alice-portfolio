@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Фурри-портфолио | Портфолио</title>
+  <!-- Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" rel="stylesheet">
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
+  <!-- Навигация -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <a href="index.html" class="text-2xl font-semibold">[Имя Художника]</a>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-indigo-600">Главная</a></li>
+          <li><a href="portfolio.html" class="hover:text-indigo-600 font-medium">Портфолио</a></li>
+          <li><a href="order.html" class="hover:text-indigo-600">Заказать арт</a></li>
+          <li><a href="about.html" class="hover:text-indigo-600">О себе</a></li>
+          <li><a href="reviews.html" class="hover:text-indigo-600">Отзывы</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-600">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Портфолио -->
+  <section class="py-12">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl font-semibold text-center mb-8">Портфолио</h1>
+      <!-- Фильтры -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button data-filter="all" class="filter-btn px-4 py-2 bg-indigo-600 text-white rounded-full">Все</button>
+        <button data-filter="sketch" class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300">Sketch</button>
+        <button data-filter="lineart" class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300">Lineart</button>
+        <button data-filter="color" class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300">Full-color</button>
+        <button data-filter="bg" class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300">Background</button>
+      </div>
+      <!-- Галерея -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Здесь вставляйте свои работы -->
+        <div class="gallery-item" data-category="sketch">
+          <a href="assets/img/portfolio1.jpg" class="glightbox" data-gallery="portfolio" data-title="Sketch #1">
+            <img src="assets/img/portfolio1_thumb.jpg" alt="Sketch #1" class="w-full h-48 object-cover rounded-lg shadow-md">
+          </a>
+        </div>
+        <!-- … другие карточки … -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="mt-auto bg-white border-t">
+    <div class="container mx-auto py-6 px-6 text-center text-sm text-gray-600">
+      &copy; 2025 [Имя Художника]. Все права защищены.
+    </div>
+  </footer>
+
+  <!-- GLightbox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const lightbox = GLightbox({ selector: '.glightbox' });
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('.gallery-item');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const f = btn.getAttribute('data-filter');
+          items.forEach(i => {
+            i.classList.toggle('hidden', f !== 'all' && i.getAttribute('data-category') !== f);
+          });
+          filterButtons.forEach(b => b.classList.replace('bg-indigo-600', 'bg-gray-200'));
+          btn.classList.replace('bg-gray-200', 'bg-indigo-600');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
