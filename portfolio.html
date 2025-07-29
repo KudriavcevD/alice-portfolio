@@ -27,7 +27,7 @@
     </div>
   </header>
 
-  <!-- Портфолио -->
+  <!-- Заголовок -->
   <section class="py-12">
     <div class="container mx-auto px-6">
       <h1 class="text-4xl font-semibold text-center mb-8">Портфолио</h1>
@@ -41,13 +41,23 @@
       </div>
       <!-- Галерея -->
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- Здесь вставляйте свои работы -->
+        <!-- Пример карточки -->
         <div class="gallery-item" data-category="sketch">
           <a href="assets/img/portfolio1.jpg" class="glightbox" data-gallery="portfolio" data-title="Sketch #1">
             <img src="assets/img/portfolio1_thumb.jpg" alt="Sketch #1" class="w-full h-48 object-cover rounded-lg shadow-md">
           </a>
         </div>
-        <!-- … другие карточки … -->
+        <div class="gallery-item" data-category="color">
+          <a href="assets/img/portfolio2.jpg" class="glightbox" data-gallery="portfolio" data-title="Full-color #1">
+            <img src="assets/img/portfolio2_thumb.jpg" alt="Full-color #1" class="w-full h-48 object-cover rounded-lg shadow-md">
+          </a>
+        </div>
+        <div class="gallery-item" data-category="lineart">
+          <a href="assets/img/portfolio3.jpg" class="glightbox" data-gallery="portfolio" data-title="Lineart #1">
+            <img src="assets/img/portfolio3_thumb.jpg" alt="Lineart #1" class="w-full h-48 object-cover rounded-lg shadow-md">
+          </a>
+        </div>
+        <!-- Добавьте остальные работы по аналогии -->
       </div>
     </div>
   </section>
@@ -63,16 +73,25 @@
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Инициализация лайтбокса
       const lightbox = GLightbox({ selector: '.glightbox' });
+
+      // Фильтрация галереи
       const filterButtons = document.querySelectorAll('.filter-btn');
       const items = document.querySelectorAll('.gallery-item');
 
       filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-          const f = btn.getAttribute('data-filter');
-          items.forEach(i => {
-            i.classList.toggle('hidden', f !== 'all' && i.getAttribute('data-category') !== f);
+          const filter = btn.getAttribute('data-filter');
+          items.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.classList.remove('hidden');
+            } else {
+              item.classList.add('hidden');
+            }
           });
+
+          // Подсветка активной кнопки
           filterButtons.forEach(b => b.classList.replace('bg-indigo-600', 'bg-gray-200'));
           btn.classList.replace('bg-gray-200', 'bg-indigo-600');
         });
