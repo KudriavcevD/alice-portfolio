@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Фурри-портфолио | Контакты</title>
+  <!-- Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
+  <!-- Навигация -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <a href="index.html" class="text-2xl font-semibold">[Имя Художника]</a>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-indigo-600">Главная</a></li>
+          <li><a href="portfolio.html" class="hover:text-indigo-600">Портфолио</a></li>
+          <li><a href="order.html" class="hover:text-indigo-600">Заказать арт</a></li>
+          <li><a href="about.html" class="hover:text-indigo-600">О себе</a></li>
+          <li><a href="reviews.html" class="hover:text-indigo-600">Отзывы</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-600 font-medium">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Контакты -->
+  <section class="py-12">
+    <div class="container mx-auto px-6 max-w-lg">
+      <h1 class="text-4xl font-semibold text-center mb-8">Свяжитесь со мной</h1>
+      <form action="https://formspree.io/f/{your-id}" method="POST" class="bg-white rounded-lg shadow-md p-6 space-y-4">
+        <div>
+          <label for="name" class="block font-medium mb-1">Ваше имя</label>
+          <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md" required>
+        </div>
+        <div>
+          <label for="email" class="block font-medium mb-1">Ваш Email</label>
+          <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md" required>
+        </div>
+        <div>
+          <label for="message" class="block font-medium mb-1">Сообщение</label>
+          <textarea id="message" name="message" rows="4" class="w-full border-gray-300 rounded-md" required></textarea>
+        </div>
+        <button type="submit" class="w-full px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md">Отправить</button>
+      </form>
+      <div class="mt-8 text-center">
+        <h2 class="text-2xl font-medium mb-4">Я в соцсетях</h2>
+        <div class="flex justify-center space-x-6">
+          <a href="#" target="_blank" class="hover:text-indigo-600">Discord</a>
+          <a href="#" target="_blank" class="hover:text-indigo-600">Instagram</a>
+          <a href="#" target="_blank" class="hover:text-indigo-600">Ko-fi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="mt-auto bg-white border-t">
+    <div class="container mx-auto py-6 px-6 text-center text-sm text-gray-600">
+      &copy; 2025 [Имя Художника]. Все права защищены.
+    </div>
+  </footer>
+</body>
+</html>
