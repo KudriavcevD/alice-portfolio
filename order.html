@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Фурри-портфолио | Заказать арт</title>
+  <!-- Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" rel="stylesheet">
+  <!-- PayPal SDK (sandbox для тестирования; замените sb на ваш client-id) -->
+  <script defer src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
+  <!-- Навигация -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <a href="index.html" class="text-2xl font-semibold">[Имя Художника]</a>
+      <nav><!-- ... --></nav>
+    </div>
+  </header>
+
+  <!-- Заказать арт -->
+  <section class="py-12">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl font-semibold text-center mb-8">Заказать арт</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- Прайс-лист -->
+        <div><!-- … прайс-блоки … --></div>
+        <!-- Форма заказа -->
+        <div>
+          <form id="order-form" action="https://formspree.io/f/{your-id}" method="POST"
+                class="bg-white rounded-lg shadow-md p-6 space-y-4">
+            <!-- тип работы, чекбоксы, описание, email … -->
+            <input type="hidden" name="totalPrice" id="hidden-total-price">
+            <div class="text-lg font-semibold">Итоговая сумма: $<span id="total-price">10</span></div>
+            <div id="paypal-button-container"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-auto bg-white border-t"><!-- … --></footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // расчёт цены и инициализация PayPal Buttons
+    });
+  </script>
+</body>
+</html>
