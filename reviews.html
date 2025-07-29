@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Фурри-портфолио | Отзывы</title>
+  <!-- Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
+  <!-- Навигация -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+      <a href="index.html" class="text-2xl font-semibold">[Имя Художника]</a>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-indigo-600">Главная</a></li>
+          <li><a href="portfolio.html" class="hover:text-indigo-600">Портфолио</a></li>
+          <li><a href="order.html" class="hover:text-indigo-600">Заказать арт</a></li>
+          <li><a href="about.html" class="hover:text-indigo-600">О себе</a></li>
+          <li><a href="reviews.html" class="hover:text-indigo-600 font-medium">Отзывы</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-600">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Отзывы -->
+  <section class="py-12">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h1 class="text-4xl font-semibold text-center mb-8">Отзывы клиентов</h1>
+      <div class="space-y-8">
+        <!-- Карточка отзыва 1 -->
+        <div class="bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-center">
+          <img src="assets/img/reviewer1.jpg" alt="Фото клиента" class="w-24 h-24 rounded-full mb-4 md:mb-0 md:mr-6">
+          <div>
+            <p class="text-gray-700 mb-2">"Я заказал арты и остался в полном восторге! Художник уловил все детали моего персонажа и сделал работу быстро и качественно."</p>
+            <p class="font-semibold">— Алексей</p>
+          </div>
+        </div>
+        <!-- Карточка отзыва 2 -->
+        <div class="bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-center">
+          <img src="assets/img/reviewer2.jpg" alt="Фото клиента" class="w-24 h-24 rounded-full mb-4 md:mb-0 md:mr-6">
+          <div>
+            <p class="text-gray-700 mb-2">"Лучший фурри-артист! Фон был просто потрясающим, а дополнительные персонажи вписались идеально."</p>
+            <p class="font-semibold">— Мария</p>
+          </div>
+        </div>
+        <!-- Карточка отзыва 3 -->
+        <div class="bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row items-center">
+          <img src="assets/img/reviewer3.jpg" alt="Фото клиента" class="w-24 h-24 rounded-full mb-4 md:mb-0 md:mr-6">
+          <div>
+            <p class="text-gray-700 mb-2">"Рекомендую всем! Процесс заказа простой, а результат превзошел все ожидания."</p>
+            <p class="font-semibold">— Сергей</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Форма для нового отзыва -->
+      <div class="mt-12 bg-gray-100 rounded-lg p-6">
+        <h2 class="text-2xl font-medium mb-4">Оставить отзыв</h2>
+        <form action="https://formspree.io/f/{your-id}" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block font-medium mb-1">Ваше имя</label>
+            <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="review" class="block font-medium mb-1">Отзыв</label>
+            <textarea id="review" name="review" rows="4" class="w-full border-gray-300 rounded-md" required></textarea>
+          </div>
+          <div>
+            <label for="email" class="block font-medium mb-1">Ваш Email</label>
+            <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md" required>
+          </div>
+          <button type="submit" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="mt-auto bg-white border-t">
+    <div class="container mx-auto py-6 px-6 text-center text-sm text-gray-600">
+      &copy; 2025 [Имя Художника]. Все права защищены.
+    </div>
+  </footer>
+</body>
+</html>
