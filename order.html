@@ -14,22 +14,104 @@
   <header class="bg-white shadow">
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
       <a href="index.html" class="text-2xl font-semibold">[Имя Художника]</a>
-      <nav><!-- ... --></nav>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-indigo-600">Главная</a></li>
+          <li><a href="portfolio.html" class="hover:text-indigo-600">Портфолио</a></li>
+          <li><a href="order.html" class="hover:text-indigo-600 font-medium">Заказать арт</a></li>
+          <li><a href="about.html" class="hover:text-indigo-600">О себе</a></li>
+          <li><a href="reviews.html" class="hover:text-indigo-600">Отзывы</a></li>
+          <li><a href="contact.html" class="hover:text-indigo-600">Контакты</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- Заказать арт -->
+  <!-- Заголовок -->
   <section class="py-12">
     <div class="container mx-auto px-6">
       <h1 class="text-4xl font-semibold text-center mb-8">Заказать арт</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <!-- Прайс-лист -->
-        <div><!-- … прайс-блоки … --></div>
+        <div>
+          <h2 class="text-2xl font-medium mb-4">Прайс-лист</h2>
+          <div class="space-y-6">
+            <!-- Sketch Commissions -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-2">Sketch Commissions</h3>
+              <ul class="list-disc list-inside">
+                <li>Headshot — $10</li>
+                <li>Half-Body — $15</li>
+                <li>Full-Body — $25</li>
+              </ul>
+            </div>
+            <!-- Sketch + Shading -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-2">Sketch + Shading</h3>
+              <ul class="list-disc list-inside">
+                <li>Headshot — $15</li>
+                <li>Half-Body — $20</li>
+                <li>Full-Body — $30</li>
+              </ul>
+            </div>
+            <!-- Full Art -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-2">Full Art</h3>
+              <ul class="list-disc list-inside">
+                <li>Headshot — $25</li>
+                <li>Half-Body — $35</li>
+                <li>Full-Body — $50</li>
+              </ul>
+            </div>
+            <!-- Background Prices -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <h3 class="text-xl font-semibold mb-2">Background Prices</h3>
+              <ul class="list-disc list-inside">
+                <li>Simple — $5</li>
+                <li>Medium Complexity — $10</li>
+                <li>Detailed Background — $20+</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <!-- Форма заказа -->
         <div>
-          <form id="order-form" action="https://formspree.io/f/{your-id}" method="POST"
-                class="bg-white rounded-lg shadow-md p-6 space-y-4">
-            <!-- тип работы, чекбоксы, описание, email … -->
+          <h2 class="text-2xl font-medium mb-4">Форма заказа</h2>
+          <form id="order-form" class="bg-white rounded-lg shadow-md p-6 space-y-4" action="https://formspree.io/f/{your-id}" method="POST">
+            <div>
+              <label for="commission-type" class="block font-medium mb-1">Тип работы</label>
+              <select name="commissionType" id="commission-type" class="w-full border-gray-300 rounded-md">
+                <option value="sketch-headshot" data-price="10">Sketch — Headshot ($10)</option>
+                <option value="sketch-half" data-price="15">Sketch — Half-Body ($15)</option>
+                <option value="sketch-full" data-price="25">Sketch — Full-Body ($25)</option>
+                <option value="shading-headshot" data-price="15">Sketch + Shading — Headshot ($15)</option>
+                <option value="shading-half" data-price="20">Sketch + Shading — Half-Body ($20)</option>
+                <option value="shading-full" data-price="30">Sketch + Shading — Full-Body ($30)</option>
+                <option value="full-headshot" data-price="25">Full Art — Headshot ($25)</option>
+                <option value="full-half" data-price="35">Full Art — Half-Body ($35)</option>
+                <option value="full-full" data-price="50">Full Art — Full-Body ($50)</option>
+              </select>
+            </div>
+            <div>
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="background" id="with-background" class="form-checkbox" data-price="5">
+                <span class="ml-2">Добавить фон</span>
+              </label>
+            </div>
+            <div>
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="extraCharacter" id="extra-character" class="form-checkbox" data-price="20">
+                <span class="ml-2">Дополнительный персонаж (+20)</span>
+              </label>
+            </div>
+            <div>
+              <label for="description" class="block font-medium mb-1">Описание заказа</label>
+              <textarea name="description" id="description" rows="4" class="w-full border-gray-300 rounded-md"></textarea>
+            </div>
+            <div>
+              <label for="email" class="block font-medium mb-1">Ваш Email</label>
+              <input type="email" name="email" id="email" class="w-full border-gray-300 rounded-md" required>
+            </div>
             <input type="hidden" name="totalPrice" id="hidden-total-price">
             <div class="text-lg font-semibold">Итоговая сумма: $<span id="total-price">10</span></div>
             <div id="paypal-button-container"></div>
@@ -39,11 +121,60 @@
     </div>
   </section>
 
-  <footer class="mt-auto bg-white border-t"><!-- … --></footer>
+  <!-- Футер -->
+  <footer class="mt-auto bg-white border-t">
+    <div class="container mx-auto py-6 px-6 text-center text-sm text-gray-600">
+      &copy; 2025 [Имя Художника]. Все права защищены.
+    </div>
+  </footer>
 
+  <!-- JavaScript для расчёта цены и PayPal -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // расчёт цены и инициализация PayPal Buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const typeSelect = document.getElementById('commission-type');
+      const bgCheckbox = document.getElementById('with-background');
+      const extraCharCheckbox = document.getElementById('extra-character');
+      const totalPriceElem = document.getElementById('total-price');
+      const hiddenTotalInput = document.getElementById('hidden-total-price');
+
+      function calculatePrice() {
+        let price = parseFloat(typeSelect.selectedOptions[0].dataset.price) || 0;
+        if (bgCheckbox.checked) price += parseFloat(bgCheckbox.dataset.price) || 0;
+        if (extraCharCheckbox.checked) price += parseFloat(extraCharCheckbox.dataset.price) || 0;
+        totalPriceElem.textContent = price.toFixed(2);
+        hiddenTotalInput.value = price.toFixed(2);
+        return price;
+      }
+
+      typeSelect.addEventListener('change', calculatePrice);
+      bgCheckbox.addEventListener('change', calculatePrice);
+      extraCharCheckbox.addEventListener('change', calculatePrice);
+
+      calculatePrice();
+
+      if (window.paypal) {
+        paypal.Buttons({
+          createOrder: (data, actions) => {
+            const total = calculatePrice();
+            return actions.order.create({
+              purchase_units: [{ amount: { value: total.toFixed(2) } }]
+            });
+          },
+          onApprove: (data, actions) => {
+            return actions.order.capture().then(details => {
+              alert(`Оплата завершена! Спасибо, ${details.payer.name.given_name}`);
+              document.getElementById('order-form').submit();
+            });
+          },
+          onError: err => {
+            console.error('PayPal Buttons Error:', err);
+            alert('Не удалось загрузить PayPal. Попробуйте позже.');
+          }
+        }).render('#paypal-button-container');
+      } else {
+        console.error('PayPal SDK не загружен. Проверьте client-id и подключение.');
+        document.getElementById('paypal-button-container').innerHTML = '<p class="text-red-600">PayPal недоступен. Попробуйте позже.</p>';
+      }
     });
   </script>
 </body>
