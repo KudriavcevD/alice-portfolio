@@ -2,126 +2,128 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <!-- Consider adding <link rel="preconnect"> to improve CDN performance -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Фурри-портфолио | Главная</title>
-  <!-- Tailwind CSS via CDN -->
+  <!-- Tailwind CSS via CDN (could use integrity and crossorigin attributes for security) -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Glide.js CSS -->
+  <!-- Glide.js CSS (bundle could be loaded asynchronously to improve initial load) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
 </head>
-<body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-purple-100 via-pink-50 to-yellow-50 text-gray-900">
   <!-- Навигация -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6">
-      <a href="index.html" class="text-2xl font-semibold">[Имя Художника]</a>
+  <header class="bg-white bg-opacity-80 backdrop-blur-sm shadow-md">
+    <div class="container mx-auto flex justify-between items-center py-4 px-8">
+      <!-- TODO: Replace placeholder with dynamic site title from config -->
+      <a href="index.html" class="text-3xl font-extrabold text-purple-600">[Имя Художника]</a>
       <nav>
-        <ul class="flex space-x-6">
-          <li><a href="index.html" class="hover:text-indigo-600">Главная</a></li>
-          <li><a href="portfolio.html" class="hover:text-indigo-600">Портфолио</a></li>
-          <li><a href="order.html" class="hover:text-indigo-600">Заказать арт</a></li>
-          <li><a href="about.html" class="hover:text-indigo-600">О себе</a></li>
-          <li><a href="reviews.html" class="hover:text-indigo-600">Отзывы</a></li>
-          <li><a href="contact.html" class="hover:text-indigo-600">Контакты</a></li>
+        <ul class="flex space-x-8 text-lg">
+          <!-- Consider using aria-current="page" on active link for accessibility -->
+          <li><a href="index.html" class="text-purple-700 font-semibold">Главная</a></li>
+          <!-- TODO: Extract repeated hover classes into a custom component class -->
+          <li><a href="portfolio.html" class="hover:text-purple-600">Портфолио</a></li>
+          <li><a href="order.html" class="hover:text-purple-600">Заказать арт</a></li>
+          <li><a href="about.html" class="hover:text-purple-600">О себе</a></li>
+          <li><a href="reviews.html" class="hover:text-purple-600">Отзывы</a></li>
+          <li><a href="contact.html" class="hover:text-purple-600">Контакты</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- Hero-блок -->
-  <section class="relative bg-cover bg-center h-screen" style="background-image: url('assets/img/hero.jpg');">
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-    <div class="container mx-auto h-full flex flex-col justify-center items-center text-center text-white px-4">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Привет, я — [Имя], фурри-артист</h1>
-      <p class="mb-6 text-lg md:text-2xl">Добро пожаловать в моё портфолио!</p>
-      <a href="portfolio.html" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white font-medium">Посмотреть портфолио</a>
+  <section class="relative flex-grow bg-cover bg-center" style="background-image: url('assets/img/hero.jpg'); height: 80vh;">
+    <!-- TODO: Move inline styles to utility classes (e.g., aspect-ratio) to maintain consistency -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-700 via-pink-600 to-transparent opacity-60"></div>
+    <div class="container mx-auto h-full flex flex-col justify-center items-start text-white pl-12">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">Привет, я — [Имя]<br>Фурри-художник</h1>
+      <p class="text-xl md:text-2xl mb-6 max-w-lg">Уникальные арты вашего персонажа в лучших традициях фурри-арта.</p>
+      <!-- Consider adding rel="noopener" to external links if needed -->
+      <a href="portfolio.html" class="px-8 py-3 bg-pink-500 hover:bg-pink-600 rounded-full text-lg font-semibold transition">Посмотреть портфолио</a>
     </div>
   </section>
 
-  <!-- Промо-слайдер -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-semibold text-center mb-8">Избранные работы</h2>
+  <!-- Избранные работы -->
+  <section class="py-16">
+    <div class="container mx-auto px-8">
+      <h2 class="text-4xl font-extrabold text-center text-purple-700 mb-10">Избранные работы</h2>
       <div class="glide">
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
-            <li class="glide__slide"><img src="assets/img/slider1.jpg" alt="Работа 1" class="w-full rounded-lg shadow-md"></li>
-            <li class="glide__slide"><img src="assets/img/slider2.jpg" alt="Работа 2" class="w-full rounded-lg shadow-md"></li>
-            <li class="glide__slide"><img src="assets/img/slider3.jpg" alt="Работа 3" class="w-full rounded-lg shadow-md"></li>
+            <!-- Use <img loading="lazy"> for better performance on large images -->
+            <li class="glide__slide"><img src="assets/img/slider1.jpg" alt="Работа 1" class="w-full h-96 object-cover rounded-3xl shadow-lg" loading="lazy"></li>
+            <li class="glide__slide"><img src="assets/img/slider2.jpg" alt="Работа 2" class="w-full h-96 object-cover rounded-3xl shadow-lg" loading="lazy"></li>
+            <li class="glide__slide"><img src="assets/img/slider3.jpg" alt="Работа 3" class="w-full h-96 object-cover rounded-3xl shadow-lg" loading="lazy"></li>
           </ul>
         </div>
-        <div class="glide__arrows" data-glide-el="controls">
-          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">◀</button>
-          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">▶</button>
+        <div class="glide__arrows flex justify-center mt-6" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left px-4 py-2 mx-2 bg-white rounded-full shadow-md hover:bg-gray-100" data-glide-dir="<">&#10094;</button>
+          <button class="glide__arrow glide__arrow--right px-4 py-2 mx-2 bg-white rounded-full shadow-md hover:bg-gray-100" data-glide-dir=">">&#10095;</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Преимущества -->
-  <section class="py-12">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-semibold text-center mb-8">Почему выбирают меня</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div class="p-6 bg-white rounded-lg shadow-md">
-          <img src="assets/img/icon-speed.svg" alt="Быстрое исполнение" class="mx-auto mb-4 w-16 h-16">
-          <h3 class="text-xl font-medium mb-2">Быстрое исполнение</h3>
-          <p>Работы выполняются в кратчайшие сроки без потери качества.</p>
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-8">
+      <h2 class="text-4xl font-extrabold text-center text-purple-700 mb-10">Почему выбирают меня</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 bg-purple-50 rounded-3xl shadow-lg hover:shadow-2xl transition">
+          <h3 class="text-2xl font-semibold mb-2 text-purple-600">Быстрое исполнение</h3>
+          <p class="text-gray-700">Работы готовы в кратчайшие сроки без ущерба качеству и деталям.</p>
         </div>
-        <div class="p-6 bg-white rounded-lg shadow-md">
-          <img src="assets/img/icon-style.svg" alt="Уникальный стиль" class="mx-auto mb-4 w-16 h-16">
-          <h3 class="text-xl font-medium mb-2">Уникальный стиль</h3>
-          <p>Каждый арт имеет индивидуальный подход и раскрывает характер персонажа.</p>
+        <div class="p-8 bg-pink-50 rounded-3xl shadow-lg hover:shadow-2xl transition">
+          <h3 class="text-2xl font-semibold mb-2 text-pink-600">Индивидуальный стиль</h3>
+          <p class="text-gray-700">Каждое произведение отражает характер и особенности вашего персонажа.</p>
         </div>
-        <div class="p-6 bg-white rounded-lg shadow-md">
-          <img src="assets/img/icon-quality.svg" alt="Высокое качество" class="mx-auto mb-4 w-16 h-16">
-          <h3 class="text-xl font-medium mb-2">Высокое качество</h3>
-          <p>Работы в высоком разрешении, готовы к печати и публикации online.</p>
+        <div class="p-8 bg-yellow-50 rounded-3xl shadow-lg hover:shadow-2xl transition">
+          <h3 class="text-2xl font-semibold mb-2 text-yellow-600">Высокое качество</h3>
+          <p class="text-gray-700">Растровые и векторные форматы, готовые к печати и публикации.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Как заказать -->
-  <section class="py-12 bg-gray-100">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-semibold text-center mb-8">Как заказать</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="flex flex-col items-center text-center">
-          <div class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 text-xl font-bold">1</div>
-          <h3 class="text-xl font-medium mb-2">Выберите тип работы</h3>
-          <p>Ознакомьтесь с прайс-листом и определитесь с опциями.</p>
+  <section class="py-16 bg-gradient-to-br from-pink-50 to-pink-100">
+    <div class="container mx-auto px-8 text-center">
+      <h2 class="text-4xl font-extrabold text-purple-700 mb-6">Как заказать арт</h2>
+      <div class="flex flex-col md:flex-row justify-center gap-8">
+        <div class="flex flex-col items-center gap-4">
+          <div class="text-3xl font-bold text-white bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center">1</div>
+          <p class="max-w-xs">Выберите тип работы в разделе «Заказать арт»</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <div class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 text-xl font-bold">2</div>
-          <h3 class="text-xl font-medium mb-2">Оплатите онлайн</h3>
-          <p>Используйте безопасную оплату через PayPal или другую систему.</p>
+        <div class="flex flex-col items-center gap-4">
+          <div class="text-3xl font-bold text-white bg-pink-600 rounded-full w-16 h-16 flex items-center justify-center">2</div>
+          <p class="max-w-xs">Оплатите удобно через PayPal или Ko-fi</p>
         </div>
-        <div class="flex flex-col items-center text-center">
-          <div class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center mb-4 text-xl font-bold">3</div>
-          <h3 class="text-xl font-medium mb-2">Получите готовый арт</h3>
-          <p>Скачайте готовую работу сразу после завершения или получите на почту.</p>
+        <div class="flex flex-col items-center gap-4">
+          <div class="text-3xl font-bold text-white bg-yellow-600 rounded-full w-16 h-16 flex items-center justify-center">3</div>
+          <p class="max-w-xs">Получите готовый арт на email или скачайте сразу</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Футер -->
-  <footer class="mt-auto bg-white border-t">
-    <div class="container mx-auto py-6 px-6 text-center text-sm text-gray-600">
+  <footer class="bg-white py-8">
+    <div class="container mx-auto text-center text-gray-500">
       &copy; 2025 [Имя Художника]. Все права защищены.
     </div>
   </footer>
 
-  <!-- Glide.js JS -->
-  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
+  <!-- Glide.js JS (defer loading to avoid blocking rendering) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       new Glide('.glide', {
         type: 'carousel',
         perView: 1,
         focusAt: 'center',
-        autoplay: 5000
-      }).mount()
+        autoplay: 4000,
+        gap: 24
+      }).mount();
     });
   </script>
 </body>
